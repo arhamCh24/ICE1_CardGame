@@ -38,18 +38,11 @@ public class CardTrick {
         luckyCard.setValue(9);  
         luckyCard.setSuit("Hearts");
         
-        // User Input to pick Card
-        System.out.println("Enter a card value (1-13): ");
-        int userInput = input.nextInt();
-        System.out.print("Enter a suit  (0-3 where 0=Hearts, 1=Diamonds, 2=Spades, 3=Clubs): ");
-        int userInputSuit = input.nextInt();
-        
-        String userSuit = Card.SUITS[userInputSuit];
         
         // Search for user card
         boolean found = false;
         for (Card card : magicHand) {
-            if (card.getValue() == userInput && card.getSuit().equals(userSuit)) {
+            if (card.getValue() == luckyCard.getValue() && card.getSuit().equals(luckyCard.getSuit())) {
                 found = true;
                 break;
             }
@@ -57,9 +50,9 @@ public class CardTrick {
         
         // Report Result
         if(found){
-            System.out.println("Your card is in the magic hand!");
+           System.out.println("The lucky card " + luckyCard.getSuit() + " " + luckyCard.getValue() + " is in the magic hand. You win!");
         }else{
-            System.out.println("Sorry, your card is not in the magic hand.");
+            System.out.println("The lucky card " + luckyCard.getSuit() + " " + luckyCard.getValue() + " is not in the magic hand. You lose.");
         }
     }
     
